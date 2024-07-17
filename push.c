@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:39:34 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/01 21:26:34 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/14 14:32:33 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	push(t_stack **dest, t_stack **src)
 void	pa(t_stack **a, t_stack **b)
 {
 	push(a, b);
+	write(STDOUT_FILENO, "pa\n", 3);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	push(b, a);
+	write(STDOUT_FILENO, "pb\n", 3);
 }

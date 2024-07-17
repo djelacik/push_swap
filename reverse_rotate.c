@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 22:50:02 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/01 23:20:18 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:52:52 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	reverse_rotate(t_stack **node)
 	t_stack	*second_last;
 	t_stack	*tail;
 
+	if (!*node || !(*node)->next)
+		return ;
 	tail = *node;
 	second_last = NULL;
 	while (tail->next)
@@ -32,15 +34,18 @@ void	reverse_rotate(t_stack **node)
 void	rra(t_stack **a)
 {
 	reverse_rotate(a);
+	write(STDOUT_FILENO, "rra\n", 4);
 }
 
 void	rrb(t_stack **b)
 {
 	reverse_rotate(b);
+	write(STDOUT_FILENO, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
+	write(STDOUT_FILENO, "rrr\n", 4);
 }

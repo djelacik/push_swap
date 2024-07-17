@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 14:39:45 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/14 18:25:09 by djelacik         ###   ########.fr       */
+/*   Created: 2024/07/13 20:12:15 by djelacik          #+#    #+#             */
+/*   Updated: 2024/07/13 20:19:51 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	str_is_digit(char *str)
+#include "push_swap.h"
+
+static void	insert_sorted_pos(int *arr, int i)
 {
-	while (*str)
+	int	key;
+	int	j;
+
+	key = arr[i];
+	j = i - 1;
+	while (j >= 0 && arr[j] > key)
 	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
+		arr[j + 1] = arr[j];
+		j--;
 	}
-	return (1);
+	arr[j + 1] = key;
+}
+
+void	insertion_sort(int *arr, int size)
+{
+	int	i;
+
+	i = 1;
+	while (i < size)
+	{
+		insert_sorted_pos(arr, i);
+		i++;
+	}
 }
