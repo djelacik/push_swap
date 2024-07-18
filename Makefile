@@ -6,7 +6,7 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/07/16 15:05:07 by djelacik         ###   ########.fr        #
+#    Updated: 2024/07/17 13:28:55 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SOURCES     = \
 	ps_utils.c \
 	insertion_sort.c \
 	get_pivot.c \
-	sort_stack.c \
 	iterative_sort.c
 OBJECTS     = ${SOURCES:.c=.o}
 

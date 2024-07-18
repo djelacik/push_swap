@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/16 15:03:15 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:18:35 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	error_exit(t_stack **stack);
 void	initialize_info(t_info **info_ptr, int argc, char **argv);
 void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc);
 
-int		get_pivot(t_stack **stack, t_info *info);
+int	get_pivot(t_stacks *stacks, t_info *info);
 
 void	insertion_sort(int *arr, int size);
 void	sort_stack(t_stacks *stacks, t_info *info);

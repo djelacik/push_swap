@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:19:31 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/16 15:03:50 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:24:55 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc)
 	}
 	if (validator(&stacks->a))
 		error_exit(&stacks->a);
-	get_pivot(&stacks->a, info);
+	get_pivot(stacks, info);
 }
 
 int	main(int argc, char **argv)

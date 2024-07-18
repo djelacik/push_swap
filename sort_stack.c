@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:36:21 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/17 11:14:33 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:27:16 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	recursive_sort(t_stacks *stacks, t_info *info, int size)
 
 	if (size <= 1)
 		return ;
-	pivot = get_pivot(&stacks->a, info);
+	pivot = get_pivot(stacks->a, info);
 	dbg_printf("Pivot is :%d", pivot);
 	processed_b = 0;
 	i = 1;

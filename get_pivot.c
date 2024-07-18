@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 19:35:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/17 11:49:06 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:26:25 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	calculate_median(t_info *info, int *arr, int size)
 	free(arr);
 }
 
-int	get_pivot(t_stack **stack, t_info *info)
+int	get_pivot(t_stacks *stacks, t_info *info)
 {
-	calculate_median(info, stack_to_array(stack, info->size), info->size);
+	calculate_median(info, stack_to_array(&stacks->a, info->size), get_stack_size(stacks->a));
 	return (info->pivot);
 }
