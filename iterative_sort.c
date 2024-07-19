@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:21:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/18 13:52:25 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:18:03 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 	}
 	while (stacks->b)
 	{
-		pa(&stacks->b, &stacks->b);
+		pa(&stacks->a, &stacks->b);
 	}
+    print_stacks(stacks);
 }
