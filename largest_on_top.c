@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:21:46 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 22:14:15 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 23:24:16 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	find_max_index(t_stack *stack, t_info *info)
 	//max_index is closest to the top, so RRB
 	return (0);
 }
-static int	find_index(t_stack *stack, t_info *info, int to_find)
+int	find_index(t_stack *stack, t_info *info, int to_find)
 {
 	int		index;
 	int		length;
@@ -48,10 +48,16 @@ static int	find_index(t_stack *stack, t_info *info, int to_find)
 	current = stack;
 	while (current != NULL)
 	{
-		if (current->value > to_find)
-		{
+		if (current->value < to_find
+			&& to_find < last_value(stack))
+			{
+				index = length;
+				break ;
+				// return (0)
+			}
+		if (current->value > to_find
+				&& current->next->value < to_find)
 			index = length;
-		}
 		current = current->next;
 		length++;
 	}

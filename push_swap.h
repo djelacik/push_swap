@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 21:26:17 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 23:24:32 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ int		last_value(t_stack *stack);
 int		is_smallest(t_stacks *stacks);
 int		is_largest(t_stacks *stacks);
 void	largest_on_top(t_stack **stack, t_info *info);
+int	find_index(t_stack *stack, t_info *info, int to_find);
 
 #endif
