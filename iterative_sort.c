@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:21:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/18 19:18:03 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:57:20 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,30 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 		if (stacks->a->value <= info->pivot)
 		{
 			if (stacks->b != NULL && stacks->b->next != NULL &&
-				stacks->b->value < stacks->a->value)
+				stacks->b->value < stacks->a->value && 
+				stacks->a->value < last_value(stacks->b))
 			{
 				pb(&stacks->a, &stacks->b);
 			}
 			else if (stacks->b != NULL && stacks->b->next != NULL &&
 				stacks->b->value > stacks->a->value)
 			{
+				if (compare_all(stacks))
+				{
+					largest_on_top(&stacks->b, info);
+					pb(&stacks->a, &stacks->b);
+					rb(&stacks->b);
+				}
+				// if stacks->a < all stacks->b->values 
+				// return 1
+				// b largest on top
+				// pb
+				// rb after it to get smallest last
+
 				while (stacks->b != NULL && stacks->b->next != NULL &&
-				stacks->b->value > stacks->b->next->value)
+				stacks->b->value > stacks->a->value)
 				{
 					rb(&stacks->b);
-					//rrb(&stacks->b);
 				}
 				pb(&stacks->a, &stacks->b);
 			}
@@ -48,10 +60,6 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 			ra(&stacks->a);
 		}
 	}
-	// if (stacks->a->value > stacks->a->next->value)
-	// {
-	// 	ra(&stacks->a);
-	// }
 	print_stacks(stacks);
 	while (stacks->b->value > stacks->a->value)
 	{

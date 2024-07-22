@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/14 21:21:50 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:29:44 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,34 @@ int	get_stack_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (count);
+}
+
+int	last_value(t_stack *stack)
+{
+	t_stack	*current;
+
+	current = stack;
+	if (!stack)
+		return (0);
+	while (current != NULL)
+		current = current->next;
+	return (current->value);
+}
+
+int	compare_all(t_stacks *stacks)
+{
+	t_stack	*current;
+	int	smallest;
+	
+	current = stacks->b;
+	smallest = current->value;
+	while (current != NULL)
+	{
+		if (current->value < smallest)
+			smallest = current->value;
+		current = current->next;
+	}
+	if (stacks->a->value < smallest)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/17 13:18:35 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 20:55:19 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef	struct s_info
 	int		argc;
 	int		size;
 	int		pivot;
-	int		recursion_count;
+	int		last_value;
+	int		max_value;
 } t_info;
 
 void	swap(t_stack **node);
@@ -73,10 +74,14 @@ void	error_exit(t_stack **stack);
 void	initialize_info(t_info **info_ptr, int argc, char **argv);
 void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc);
 
-int	get_pivot(t_stacks *stacks, t_info *info);
+int		get_pivot(t_stacks *stacks, t_info *info);
 
 void	insertion_sort(int *arr, int size);
 void	sort_stack(t_stacks *stacks, t_info *info);
 void	recursive_sort(t_stacks *stacks, t_info *info, int size);
 void	iterative_sort(t_stacks *stacks, t_info *info);
+int		last_value(t_stack *stack);
+int		compare_all(t_stacks *stacks);
+void	largest_on_top(t_stack **stack, t_info *info);
+
 #endif
