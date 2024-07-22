@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 20:55:19 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 21:26:17 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	sort_stack(t_stacks *stacks, t_info *info);
 void	recursive_sort(t_stacks *stacks, t_info *info, int size);
 void	iterative_sort(t_stacks *stacks, t_info *info);
 int		last_value(t_stack *stack);
-int		compare_all(t_stacks *stacks);
+int		is_smallest(t_stacks *stacks);
+int		is_largest(t_stacks *stacks);
 void	largest_on_top(t_stack **stack, t_info *info);
 
 #endif

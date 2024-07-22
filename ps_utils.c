@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 20:29:44 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 21:25:55 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	last_value(t_stack *stack)
 	return (current->value);
 }
 
-int	compare_all(t_stacks *stacks)
+int	is_smallest(t_stacks *stacks)
 {
 	t_stack	*current;
 	int	smallest;
@@ -135,6 +135,24 @@ int	compare_all(t_stacks *stacks)
 		current = current->next;
 	}
 	if (stacks->a->value < smallest)
+		return (1);
+	return (0);
+}
+
+int	is_largest(t_stacks *stacks)
+{
+	t_stack	*current;
+	int	largest;
+	
+	current = stacks->b;
+	largest = current->value;
+	while (current != NULL)
+	{
+		if (current->value > largest)
+			largest = current->value;
+		current = current->next;
+	}
+	if (stacks->a->value > largest)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:21:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 20:57:20 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/22 22:05:21 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,42 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 		dbg_printf("Pivot is : %d\n", info->pivot);
 		if (stacks->a->value <= info->pivot)
 		{
-			if (stacks->b != NULL && stacks->b->next != NULL &&
-				stacks->b->value < stacks->a->value && 
-				stacks->a->value < last_value(stacks->b))
+			if (stacks->b != NULL && stacks->b->next != NULL)
 			{
-				pb(&stacks->a, &stacks->b);
-			}
-			else if (stacks->b != NULL && stacks->b->next != NULL &&
-				stacks->b->value > stacks->a->value)
-			{
-				if (compare_all(stacks))
+				if (stacks->a->value > stacks->b->value && 
+					stacks->a->value < last_value(stacks->b))//if not true, we need to RRB
 				{
-					largest_on_top(&stacks->b, info);
 					pb(&stacks->a, &stacks->b);
-					rb(&stacks->b);
 				}
-				// if stacks->a < all stacks->b->values 
-				// return 1
-				// b largest on top
-				// pb
-				// rb after it to get smallest last
-
-				while (stacks->b != NULL && stacks->b->next != NULL &&
-				stacks->b->value > stacks->a->value)
+				else if (stacks->a->value < stacks->b->value)
 				{
-					rb(&stacks->b);
+					if (is_smallest(stacks))
+					{
+						largest_on_top(&stacks->b, info);
+						pb(&stacks->a, &stacks->b);
+						rb(&stacks->b);
+					}
+					// if stacks->a < all stacks->b->values 
+					// return 1
+					// b largest on top
+					// pb
+					// rb after it to get smallest last
+					while (stacks->b->value > stacks->a->value)
+					{
+						rb(&stacks->b);
+					}
+					pb(&stacks->a, &stacks->b);
 				}
-				pb(&stacks->a, &stacks->b);
+				else
+				{
+					// if stacks->a larger than b all
+					if (is_largest(stacks))
+					{
+						largest_on_top(&stacks->b, info);
+						pb(&stacks->a, &stacks->b);
+					}
+					
+				}
 			}
 			else
 			{
