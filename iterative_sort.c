@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:21:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 22:05:21 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:19:31 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,28 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 {	
 	while (get_stack_size(stacks->a) > 1)
 	{
-		print_stacks(stacks);
-		dbg_printf("Stack size A: %d    B: %d\n", get_stack_size(stacks->a), get_stack_size(stacks->b));
+		//print_stacks(stacks);
+		//dbg_printf("Stack size A: %d    B: %d\n", get_stack_size(stacks->a), get_stack_size(stacks->b));
 		info->pivot = get_pivot(stacks, info);
-		dbg_printf("Pivot is : %d\n", info->pivot);
+		//dbg_printf("Pivot is : %d\n", info->pivot);
 		if (stacks->a->value <= info->pivot)
 		{
 			if (stacks->b != NULL && stacks->b->next != NULL)
 			{
-				if (stacks->a->value > stacks->b->value && 
-					stacks->a->value < last_value(stacks->b))//if not true, we need to RRB
+				if (is_smallest(stacks))
 				{
+					largest_on_top(&stacks->b, info);
 					pb(&stacks->a, &stacks->b);
+					rb(&stacks->b);
 				}
-				else if (stacks->a->value < stacks->b->value)
+				if (is_largest(stacks))
 				{
-					if (is_smallest(stacks))
-					{
-						largest_on_top(&stacks->b, info);
-						pb(&stacks->a, &stacks->b);
-						rb(&stacks->b);
-					}
-					// if stacks->a < all stacks->b->values 
-					// return 1
-					// b largest on top
-					// pb
-					// rb after it to get smallest last
-					while (stacks->b->value > stacks->a->value)
-					{
-						rb(&stacks->b);
-					}
+					largest_on_top(&stacks->b, info);
 					pb(&stacks->a, &stacks->b);
 				}
 				else
 				{
-					// if stacks->a larger than b all
-					if (is_largest(stacks))
-					{
-						largest_on_top(&stacks->b, info);
-						pb(&stacks->a, &stacks->b);
-					}
-					
+					rotate_and_insert(stacks);
 				}
 			}
 			else
@@ -69,11 +50,7 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 			ra(&stacks->a);
 		}
 	}
-	print_stacks(stacks);
-	while (stacks->b->value > stacks->a->value)
-	{
-		rrb(&stacks->b);
-	}
+	largest_on_top(&stacks->b, info);
 	while (stacks->b)
 	{
 		pa(&stacks->a, &stacks->b);

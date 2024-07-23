@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:21:46 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 23:24:16 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:15:50 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	find_max_index(t_stack *stack, t_info *info)
 		current = current->next;
 		length++;
 	}
-	//max_index is closer to the end, so RB
+	//max_index is closer to the end, so RBB
 	if (max_index > (length / 2))
 		return (1);
-	//max_index is closest to the top, so RRB
+	//max_index is closest to the top, so RB
 	return (0);
 }
-int	find_index(t_stack *stack, t_info *info, int to_find)
+int	find_index(t_stack *stack, int to_find)
 {
 	int		index;
 	int		length;
@@ -51,9 +51,8 @@ int	find_index(t_stack *stack, t_info *info, int to_find)
 		if (current->value < to_find
 			&& to_find < last_value(stack))
 			{
-				index = length;
 				break ;
-				// return (0)
+				// return (2)
 			}
 		if (current->value > to_find
 				&& current->next->value < to_find)
@@ -61,16 +60,46 @@ int	find_index(t_stack *stack, t_info *info, int to_find)
 		current = current->next;
 		length++;
 	}
-	//index is closer to the end, so RB
+	//index is closer to the end, so RRB
 	if (index > (length / 2))
 		return (1);
-	//index is closest to the top, so RRB
+	//index is closest to the top, so RB
 	return (0);
 }
 
+void	rotate_and_insert(t_stacks *stacks)
+{
+	if (find_index(stacks->a, stacks->a->value))
+	{
+		while (!(stacks->a->value > stacks->b->value
+				&& stacks->a->value < last_value(stacks->b)))
+		{	
+			rrb(&stacks->b);
+		}
+	}
+	else
+	{
+		while (!(stacks->a->value > stacks->b->value
+				&& stacks->a->value < last_value(stacks->b)))
+		{	
+			rb(&stacks->b);
+		}
+	}
+	pb(&stacks->a, &stacks->b);
+}
+
+int	is_correct_pos(t_stacks *stacks)
+{
+	if (stacks->a->value > stacks->b->value
+			&& stacks->a->value < last_value(stacks->b))
+			return (1);
+	return (0);
+}
+
+
 void	largest_on_top(t_stack **stack, t_info *info)
 {
-	if (find_max_index(*stack, info))
+	if (!find_max_index(*stack, info))
 	{
 		while ((*stack)->value != info->max_value)
 			rb(stack);
