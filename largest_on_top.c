@@ -46,7 +46,7 @@ int	find_index(t_stack *stack, int to_find)
 	index = 0;
 	length = 0;
 	current = stack;
-	while (current != NULL)
+	while (current->next != NULL)
 	{
 		if (current->value < to_find
 			&& to_find < last_value(stack))
@@ -61,7 +61,7 @@ int	find_index(t_stack *stack, int to_find)
 		length++;
 	}
 	//index is closer to the end, so RRB
-	if (index > (length / 2))
+	if (index > (length / 2) + 1)
 		return (1);
 	//index is closest to the top, so RB
 	return (0);
