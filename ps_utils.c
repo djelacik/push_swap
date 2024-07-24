@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/22 21:25:55 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:30:10 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,10 @@ int	last_value(t_stack *stack)
 	current = stack;
 	if (!stack)
 		return (0);
-	while (current != NULL)
+	while (current->next != NULL)
 		current = current->next;
 	return (current->value);
 }
-
 int	is_smallest(t_stacks *stacks)
 {
 	t_stack	*current;

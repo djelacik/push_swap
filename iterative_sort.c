@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:21:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/23 21:19:31 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/23 22:08:04 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 					pb(&stacks->a, &stacks->b);
 					rb(&stacks->b);
 				}
-				if (is_largest(stacks))
+				else if (is_largest(stacks))
 				{
 					largest_on_top(&stacks->b, info);
 					pb(&stacks->a, &stacks->b);
@@ -55,5 +55,5 @@ void	iterative_sort(t_stacks *stacks, t_info *info)
 	{
 		pa(&stacks->a, &stacks->b);
 	}
-    print_stacks(stacks);
+    //print_stacks(stacks);
 }

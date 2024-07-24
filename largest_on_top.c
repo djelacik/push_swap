@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:21:46 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/23 21:15:50 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:45:36 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	find_index(t_stack *stack, int to_find)
 		length++;
 	}
 	//index is closer to the end, so RRB
-	if (index > (length / 2) + 1)
+	if (index > (length / 2))
 		return (1);
 	//index is closest to the top, so RB
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:19:31 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/17 13:24:55 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/24 13:26:38 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(int argc, char **argv)
 	{
 		initialize_info(&info, argc, argv);
 		initialize_stacks(&stacks, info, argv);
-		iterative_sort(&stacks, info);
+		test_algo(&stacks, info);
+		//iterative_sort(&stacks, info);
 		//sort_stack(&stacks, info);
 		//print_stacks(&stacks);
 		free_stack(&stacks.a);

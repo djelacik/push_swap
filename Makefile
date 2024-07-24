@@ -6,7 +6,7 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/07/22 21:03:09 by djelacik         ###   ########.fr        #
+#    Updated: 2024/07/24 12:29:05 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SOURCES     = \
 	insertion_sort.c \
 	get_pivot.c \
 	iterative_sort.c \
-	largest_on_top.c
+	largest_on_top.c \
+	hope_chess.c
 OBJECTS     = ${SOURCES:.c=.o}
 
 %.o: %.c

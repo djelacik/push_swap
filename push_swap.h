@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/23 21:24:23 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:26:36 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				rank;
 	struct s_stack	*next;
 } t_stack;
 
@@ -87,6 +88,9 @@ void	largest_on_top(t_stack **stack, t_info *info);
 int		find_index(t_stack *stack, int to_find);
 int		is_correct_pos(t_stacks *stacks);
 void	rotate_and_insert(t_stacks *stacks);
+
+void	test_algo(t_stacks *stacks, t_info *info);
+
 
 #endif
 
