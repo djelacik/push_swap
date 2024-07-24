@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/24 12:26:36 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:44:11 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 typedef struct s_stack
 {
 	int				value;
-	int				rank;
+	int				cost;
 	struct s_stack	*next;
 } t_stack;
 
@@ -48,6 +48,8 @@ typedef	struct s_info
 	int		pivot;
 	int		last_value;
 	int		max_value;
+	int		second_max;
+	int		counter;
 } t_info;
 
 void	swap(t_stack **node);
@@ -90,7 +92,7 @@ int		is_correct_pos(t_stacks *stacks);
 void	rotate_and_insert(t_stacks *stacks);
 
 void	test_algo(t_stacks *stacks, t_info *info);
-
+void	new_algo(t_stacks *stacks, t_info *info);
 
 #endif
 
