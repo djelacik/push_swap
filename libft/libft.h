@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:19:56 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/14 18:25:49 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:16:39 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 int			ft_lstsize(t_list *lst);
+
+int			ft_min(int a, int b);
 
 #endif

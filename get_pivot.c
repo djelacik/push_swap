@@ -6,13 +6,13 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 19:35:54 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/17 13:26:25 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:28:28 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*stack_to_array(t_stack **stack, int size)
+int	*stack_to_array(t_stack **stack, int size)
 {
 	t_stack	*current;
 	int		*array;

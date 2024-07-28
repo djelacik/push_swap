@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:21:46 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/24 12:45:36 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:37:22 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ int	find_index(t_stack *stack, int to_find)
 	{
 		if (current->value < to_find
 			&& to_find < last_value(stack))
-			{
 				break ;
-				// return (2)
-			}
 		if (current->value > to_find
 				&& current->next->value < to_find)
 			index = length;

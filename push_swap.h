@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/24 22:44:11 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:42:27 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stack
 {
 	int				value;
 	int				cost;
+	int				rank;
 	struct s_stack	*next;
 } t_stack;
 
@@ -94,5 +95,7 @@ void	rotate_and_insert(t_stacks *stacks);
 void	test_algo(t_stacks *stacks, t_info *info);
 void	new_algo(t_stacks *stacks, t_info *info);
 
-#endif
+int	*stack_to_array(t_stack **stack, int size);
+int	get_direction(t_stack *stack, int to_find);
 
+#endif
