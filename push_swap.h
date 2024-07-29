@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/27 19:42:27 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:03:55 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ void	rotate_and_insert(t_stacks *stacks);
 void	test_algo(t_stacks *stacks, t_info *info);
 void	new_algo(t_stacks *stacks, t_info *info);
 
-int	*stack_to_array(t_stack **stack, int size);
-int	get_direction(t_stack *stack, int to_find);
+int		*stack_to_array(t_stack **stack, int size);
+int		get_direction(t_stack *stack, int to_find);
+
+void 	hope_algo(t_stack *src, t_stack *dest);
 
 #endif
