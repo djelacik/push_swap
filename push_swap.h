@@ -31,7 +31,7 @@ typedef struct s_stack
 {
 	int				value;
 	int				cost;
-	int				rank;
+//	int				rank;
 	struct s_stack	*next;
 } t_stack;
 

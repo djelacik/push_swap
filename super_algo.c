@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:36:16 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/29 18:25:59 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/30 13:09:11 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	get_moves(t_stack *stack, int value)
 	
 	current = stack;
 	moves = 0;
-	while (current != NULL && current->next)
+	while (current->next)
 	{
 		if (correct_position_values(stack, value))
 			return (moves);
@@ -68,6 +68,23 @@ static int	get_moves(t_stack *stack, int value)
 		moves++;
 	}
 	return (moves);
+}
+
+static int	cost_to_top(t_stack *stack, int value)
+{
+	t_stack	*current;
+	int		index;
+
+	current = stack;
+	index = 0;
+	while (stack->value != value)
+	{
+		index++;
+		current = current->next;
+	}
+	if (index > (get_stack_size(stack) / 2))
+		index = get_stack_size(stack) - index;
+	return (index);
 }
 
 int	get_direction(t_stack *stack, int to_find)
@@ -105,7 +122,7 @@ static int	calculate_moves(t_stack *src, t_stack *dest, int value)
 	int	src_direct;
 	int	dest_direct;
 
-	src_moves = get_moves(src, value);
+	src_moves = cost_to_top(src, value);
 	dest_moves = get_moves(dest, value);
 	src_direct = 0;
 	dest_direct = 0;
@@ -124,7 +141,7 @@ static int	calculate_moves(t_stack *src, t_stack *dest, int value)
 	{
 		total -= ft_min(src_moves, dest_moves);
 	}
-	return (total);	
+	return (total);
 }
 
 static void	set_cost(t_stack *src, t_stack *dest)
@@ -138,7 +155,7 @@ static void	set_cost(t_stack *src, t_stack *dest)
 		current = current->next;
 	}
 	current = dest;
-	while (dest)
+	while (current)
 	{
 		current->cost = calculate_moves(dest, src, current->value);
 		current = current->next;	
@@ -181,6 +198,7 @@ static void	exec_commands(t_stack *src, t_stack *dest)
 			ra(&src);
 		}
 	}
+	
 	while (!correct_position_values(dest, src->value))
 	{
 		if (get_direction(dest, src->value))
@@ -197,6 +215,8 @@ static void	exec_commands(t_stack *src, t_stack *dest)
 
 void hope_algo(t_stack *src, t_stack *dest)
 {
+	pb(&src, &dest);
+	pb(&src, &dest);
 	set_cost(src, dest);
 	while (src)
 	{
