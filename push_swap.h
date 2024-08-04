@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/29 18:03:55 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/04 21:00:28 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,8 @@ int		*stack_to_array(t_stack **stack, int size);
 int		get_direction(t_stack *stack, int to_find);
 
 void 	hope_algo(t_stack *src, t_stack *dest);
+
+
+void	print_stack(char name, t_stack *stack);
 
 #endif

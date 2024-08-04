@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/24 12:30:10 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:28:28 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,20 @@ void	print_stacks(t_stacks *stacks)
 		current = current->next;
 	}
 	printf("\n");
+}
+void	print_stack(char name, t_stack *stack)
+{
+	t_stack	*current;
+	
+	dbg_printf("Stack %c:\n", name);
+	(void)name;
+	current = stack;
+	while (current)
+	{
+		dbg_printf("%d ", current->value);
+		current = current->next;
+	}
+	dbg_printf("\n");
 }
 
 void	free_stack(t_stack **stack)
