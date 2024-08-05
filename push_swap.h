@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/05 11:38:52 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:42:36 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ typedef	struct s_info
 	int		max_value;
 	int		second_max;
 	int		counter;
+
+	int		dup_moves;
+	int		src_direct;
+	int		dest_direct;
 } t_info;
 
 void	swap(t_stack **node);
@@ -98,8 +102,7 @@ void	new_algo(t_stacks *stacks, t_info *info);
 int		*stack_to_array(t_stack **stack, int size);
 int		get_direction(t_stack *stack, int to_find);
 
-void 	hope_algo(t_stack *src, t_stack *dest);
-
+void	hope_algo(t_stack *src, t_stack *dest, t_info *info);
 
 void	print_stack(char name, t_stack *stack);
 

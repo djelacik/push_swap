@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:36:16 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/05 11:36:18 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:37:27 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ static int	cost_to_top(t_stack *stack, int value)
 		index++;
 		current = current->next;
 	}
-	if (index > (get_stack_size(stack) / 2))
-		index = get_stack_size(stack) - index;
+	// if (index > (get_stack_size(stack) / 2))
+	// 	index = get_stack_size(stack) - index;
 	return (index);
 }
 
@@ -173,6 +173,30 @@ int	get_direction(t_stack *stack, int to_find)
 	//index is closest to the top, so RB
 	return (0);
 }
+static void	save_cheapest(t_stack *src, t_stack *dest, t_info *info, int value)
+{
+	int	src_moves;
+	int	dest_moves;
+
+	src_moves = cost_to_top(src, value);
+	dest_moves = get_moves(dest, value);
+	if (src_moves > (get_stack_size(src) / 2))
+	{
+		src_moves = get_stack_size(src) - src_moves;
+		info->src_direct = 1;
+	}
+	else
+		info->src_direct = 2;
+	if (dest_moves > (get_stack_size(dest) / 2))
+	{
+		dest_moves = get_stack_size(dest) - dest_moves;
+		info->dest_direct = 1;
+	}
+	else
+		info->dest_direct = 2;
+	if (info->src_direct == info->dest_direct)
+		info->dup_moves = ft_min(src_moves, dest_moves);
+}
 
 static int	calculate_moves(t_stack *src, t_stack *dest, int value)
 {
@@ -197,29 +221,11 @@ static int	calculate_moves(t_stack *src, t_stack *dest, int value)
 		dest_direct = 1;
 	}
 	total = src_moves + dest_moves;
-	if (src_direct == dest_direct && 1 == 2)
+	if (src_direct == dest_direct)
 	{
 		total -= ft_min(src_moves, dest_moves);
 	}
 	return (total);
-}
-
-static void	set_cost(t_stack *src, t_stack *dest)
-{
-	t_stack	*current;
-
-	current = src;
-	while (current)
-	{
-		current->cost = calculate_moves(src, dest, current->value);
-		current = current->next;
-	}
-	current = dest;
-	while (current)
-	{
-		current->cost = calculate_moves(dest, src, current->value);
-		current = current->next;	
-	}
 }
 
 static int	find_cheapest(t_stack *src)
@@ -242,12 +248,61 @@ static int	find_cheapest(t_stack *src)
 		current = current->next;
 	}
 	return (value);
-	//return (current->rank);
 }
 
-static void	exec_commands(t_stack **src, t_stack **dest)
+static void	set_cost(t_stack *src, t_stack *dest, t_info *info)
 {
-	set_cost(*src, *dest);
+	t_stack	*current;
+
+	current = src;
+	while (current)
+	{
+		current->cost = calculate_moves(src, dest, current->value);
+		current = current->next;
+	}
+	current = dest;
+	while (current)
+	{
+		current->cost = calculate_moves(dest, src, current->value);
+		current = current->next;	
+	}
+	current = src;
+	while (current)
+	{
+		if (current->value == find_cheapest(current))
+		{
+			save_cheapest(src, dest, info, current->value);
+			break ;
+		}
+		current = current->next;
+	}
+}
+
+static void	dup_rotates(t_stack **src, t_stack **dest, t_info *info)
+{
+	if (info->src_direct == 1 && info->dest_direct == 1)
+	{
+		while (info->dup_moves)
+		{
+			rrr(src, dest);
+			info->dup_moves--;
+		}
+	}
+	if (info->src_direct == 2 && info->dest_direct == 2)
+	{
+		while (info->dup_moves)
+		{
+			rr(src, dest);
+			info->dup_moves--;
+		}
+	}
+}
+
+
+static void	exec_commands(t_stack **src, t_stack **dest, t_info *info)
+{
+	set_cost(*src, *dest, info);
+	dup_rotates(src, dest, info);
 	while ((*src)->value != find_cheapest((*src)))
 	{
 		if (dist_to_top(*src, find_cheapest((*src))))
@@ -272,16 +327,15 @@ static void	exec_commands(t_stack **src, t_stack **dest)
 		}
 	}
 	pb(src, dest);
-	//print_stack('A', *src);
 }
 
-void hope_algo(t_stack *src, t_stack *dest)
+void	hope_algo(t_stack *src, t_stack *dest, t_info *info)
 {
 	pb(&src, &dest);
 	pb(&src, &dest);
 	while (src)
 	{
-		exec_commands(&src, &dest);
+		exec_commands(&src, &dest, info);
 	}
 	rb(&dest);
 	while (dest)
