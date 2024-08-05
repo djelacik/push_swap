@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/04 21:00:28 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:38:52 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 #include <stdio.h>
 
-#define DBG_PRINT_FD
+//#define DBG_PRINT_FD
 
 #ifdef DBG_PRINT_FD
 #define dbg_printf(...) fprintf(stderr, __VA_ARGS__)
 #else
-//#define dbg_printf(...)
+#define dbg_printf(...)
 #endif
 
 typedef struct s_stack

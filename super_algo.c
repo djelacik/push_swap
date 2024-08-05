@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:36:16 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/04 20:58:25 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:36:18 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	if_largest(t_stack *stack, int value)
 
 static int	correct_position_values(t_stack *stack, int value)
 {
+	if (get_stack_size(stack) == 1)
+		return (1);
 	if (stack->value < value
 			&& value < last_value(stack))
 		return (1);
@@ -155,18 +157,18 @@ int	get_direction(t_stack *stack, int to_find)
 	index = 0;
 	length = 0;
 	current = stack;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
-		if (correct_position_values(current, to_find)
-				|| to_find == current->value)
+		if (correct_position_values(current, to_find))
 			{
 				index = length;
+                break ;
 			}	
 		current = current->next;
 		length++;
 	}
 	//index is closer to the end, so RRB
-	if (index > (length / 2))
+	if (index > (get_stack_size(stack) / 2))
 		return (1);
 	//index is closest to the top, so RB
 	return (0);
