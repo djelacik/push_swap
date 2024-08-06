@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:19:31 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/05 15:02:58 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:30:52 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,21 @@ void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc)
 	}
 	if (validator(&stacks->a))
 		error_exit(&stacks->a);
-	get_pivot(stacks, info);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stacks 	stacks;
+	t_stacks	stacks;
 	t_info		*info;
-	
-	info = NULL;
 
+	info = NULL;
 	if (argc != 2)
 	{
 		initialize_info(&info, argc, argv);
 		initialize_stacks(&stacks, info, argv);
-		
-		//iterative_sort(&stacks, info);
-		//test_algo(&stacks, info);
-		//new_algo(&stacks, info);
-		hope_algo(stacks.a, stacks.b, info);
+		if (is_sorted(stacks.a))
+			exit (EXIT_SUCCESS);
+		super_algo(stacks.a, stacks.b, info);
 		free_stack(&stacks.a);
 		free_stack(&stacks.b);
 		free(info);

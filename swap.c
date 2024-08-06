@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:36:05 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/14 14:33:17 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:33:11 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 void	swap(t_stack **node)
 {
 	int	temp;
-	
-	if (*node && (*node) -> next != NULL)
+
+	if (*node && (*node)->next != NULL)
 	{
 		temp = (*node)->value;
-		(*node) -> value = (*node) -> next -> value;
-		(*node) -> next -> value = temp;
+		(*node)->value = (*node)->next->value;
+		(*node)->next->value = temp;
 	}
 }
+
 void	sa(t_stack **a)
 {
 	swap(a);

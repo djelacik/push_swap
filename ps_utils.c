@@ -6,12 +6,11 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/31 14:28:28 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:03:53 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	add_node(t_stack **head, t_info *info, int value)
 {
@@ -35,41 +34,6 @@ void	add_node(t_stack **head, t_info *info, int value)
 	info->size++;
 }
 
-void	print_stacks(t_stacks *stacks)
-{
-	t_stack	*current;
-	
-	printf("Stack A:\n");
-	current = stacks->a;
-	while (current)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-	printf("Stack B:\n");
-	current = stacks->b;
-	while (current)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-	printf("\n");
-}
-void	print_stack(char name, t_stack *stack)
-{
-	t_stack	*current;
-	
-	dbg_printf("Stack %c:\n", name);
-	(void)name;
-	current = stack;
-	while (current)
-	{
-		dbg_printf("%d ", current->value);
-		current = current->next;
-	}
-	dbg_printf("\n");
-}
-
 void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
@@ -80,27 +44,6 @@ void	free_stack(t_stack **stack)
 		*stack = (*stack)->next;
 		free(temp);
 	}
-}
-
-int	validator(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*current;
-
-	temp = *stack;
-	current = temp;
-	while (current && current->next != NULL)
-	{
-		temp = current->next;
-		while (temp)
-		{
-			if (temp->value == current->value)
-				return (1);
-			temp = temp->next;
-		}
-		current = current->next;
-	}
-	return (0);
 }
 
 void	error_exit(t_stack **stack)
@@ -133,39 +76,4 @@ int	last_value(t_stack *stack)
 	while (current->next != NULL)
 		current = current->next;
 	return (current->value);
-}
-int	is_smallest(t_stacks *stacks)
-{
-	t_stack	*current;
-	int	smallest;
-	
-	current = stacks->b;
-	smallest = current->value;
-	while (current != NULL)
-	{
-		if (current->value < smallest)
-			smallest = current->value;
-		current = current->next;
-	}
-	if (stacks->a->value < smallest)
-		return (1);
-	return (0);
-}
-
-int	is_largest(t_stacks *stacks)
-{
-	t_stack	*current;
-	int	largest;
-	
-	current = stacks->b;
-	largest = current->value;
-	while (current != NULL)
-	{
-		if (current->value > largest)
-			largest = current->value;
-		current = current->next;
-	}
-	if (stacks->a->value > largest)
-		return (1);
-	return (0);
 }

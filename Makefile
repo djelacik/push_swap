@@ -6,7 +6,7 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/07/29 18:01:33 by djelacik         ###   ########.fr        #
+#    Updated: 2024/08/06 17:17:38 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,9 @@ SOURCES     = \
 	swap.c \
 	reverse_rotate.c \
 	ps_utils.c \
-	insertion_sort.c \
-	get_pivot.c \
-	iterative_sort.c \
-	largest_on_top.c \
-	hope_chess.c \
+	ps_utils2.c \
+	algorithm_utils.c \
+	set_costs.c \
 	super_algo.c
 OBJECTS     = ${SOURCES:.c=.o}
 

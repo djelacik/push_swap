@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/05 16:42:36 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:29:37 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,20 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-#include <stdio.h>
-
-//#define DBG_PRINT_FD
-
-#ifdef DBG_PRINT_FD
-#define dbg_printf(...) fprintf(stderr, __VA_ARGS__)
-#else
-#define dbg_printf(...)
-#endif
-
 typedef struct s_stack
 {
 	int				value;
 	int				cost;
-//	int				rank;
 	struct s_stack	*next;
-} t_stack;
+}	t_stack;
 
 typedef struct s_stacks
 {
-	t_stack *a;
-	t_stack *b;
-} t_stacks;
+	t_stack	*a;
+	t_stack	*b;
+}	t_stacks;
 
-typedef	struct s_info
+typedef struct s_info
 {
 	char	**argv;
 	int		argc;
@@ -55,7 +44,7 @@ typedef	struct s_info
 	int		dup_moves;
 	int		src_direct;
 	int		dest_direct;
-} t_info;
+}	t_info;
 
 void	swap(t_stack **node);
 void	sa(t_stack **a);
@@ -78,32 +67,30 @@ void	print_stacks(t_stacks *stacks);
 int		get_stack_size(t_stack *stack);
 void	free_stack(t_stack **stack);
 int		validator(t_stack **stack);
+int		is_sorted(t_stack *stack);
 void	error_exit(t_stack **stack);
 void	initialize_info(t_info **info_ptr, int argc, char **argv);
 void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc);
 
-int		get_pivot(t_stacks *stacks, t_info *info);
-
-void	insertion_sort(int *arr, int size);
-void	sort_stack(t_stacks *stacks, t_info *info);
-void	recursive_sort(t_stacks *stacks, t_info *info, int size);
-void	iterative_sort(t_stacks *stacks, t_info *info);
 int		last_value(t_stack *stack);
-int		is_smallest(t_stacks *stacks);
-int		is_largest(t_stacks *stacks);
-void	largest_on_top(t_stack **stack, t_info *info);
-int		find_index(t_stack *stack, int to_find);
-int		is_correct_pos(t_stacks *stacks);
-void	rotate_and_insert(t_stacks *stacks);
-
-void	test_algo(t_stacks *stacks, t_info *info);
-void	new_algo(t_stacks *stacks, t_info *info);
-
-int		*stack_to_array(t_stack **stack, int size);
+int		if_smallest(t_stack *stack, int value);
+int		if_largest(t_stack *stack, int value);
+int		correct_position_values(t_stack *stack, int value);
+int		get_moves(t_stack *stack, int value);
+int		dist_to_top(t_stack *stack, int value);
 int		get_direction(t_stack *stack, int to_find);
+int		get_smallest(t_stack *stack);
 
-void	hope_algo(t_stack *src, t_stack *dest, t_info *info);
+int		cost_to_top(t_stack *stack, int value);
+int		calculate_moves(t_stack *src, t_stack *dest, int value);
+int		find_cheapest(t_stack *src);
+void	set_cost(t_stack *src, t_stack *dest, t_info *info);
+void	save_cheapest(t_stack *src, t_stack *dest, t_info *info, int value);
 
-void	print_stack(char name, t_stack *stack);
+void	smallest_on_top(t_stack **stack);
+void	dup_rotates(t_stack **src, t_stack **dest, t_info *info);
+void	exec_commands(t_stack **src, t_stack **dest, t_info *info);
+
+void	super_algo(t_stack *src, t_stack *dest, t_info *info);
 
 #endif
