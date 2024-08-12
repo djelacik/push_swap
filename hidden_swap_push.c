@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   hidden_swap_push.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 16:19:31 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/08 16:33:47 by djelacik         ###   ########.fr       */
+/*   Created: 2024/08/10 14:06:49 by djelacik          #+#    #+#             */
+/*   Updated: 2024/08/10 14:18:12 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	hidden_sa(t_stack **a)
 {
-	t_stacks	stacks;
-	t_info		*info;
+	swap(a);
+}
 
-	info = NULL;
-	if (argc != 2)
-	{
-		initialize_info(&info, argc, argv);
-		initialize_stacks(&stacks, info, argv);
-		if (is_sorted(stacks.a))
-			exit (EXIT_SUCCESS);
-		super_algo(stacks.a, stacks.b, info);
-		free_stack(&stacks.a);
-		free_stack(&stacks.b);
-		free(info);
-	}
-	return (0);
+void	hidden_sb(t_stack **b)
+{
+	swap(b);
+}
+
+void	hidden_ss(t_stack **a, t_stack **b)
+{
+	swap(a);
+	swap(b);
+}
+
+void	hidden_pa(t_stack **a, t_stack **b)
+{
+	push(a, b);
+}
+
+void	hidden_pb(t_stack **a, t_stack **b)
+{
+	push(b, a);
 }

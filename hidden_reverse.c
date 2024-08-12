@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   hidden_reverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 16:19:31 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/08 16:33:47 by djelacik         ###   ########.fr       */
+/*   Created: 2024/08/10 14:57:43 by djelacik          #+#    #+#             */
+/*   Updated: 2024/08/10 14:58:30 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	hidden_rra(t_stack **a)
 {
-	t_stacks	stacks;
-	t_info		*info;
+	reverse_rotate(a);
+}
 
-	info = NULL;
-	if (argc != 2)
-	{
-		initialize_info(&info, argc, argv);
-		initialize_stacks(&stacks, info, argv);
-		if (is_sorted(stacks.a))
-			exit (EXIT_SUCCESS);
-		super_algo(stacks.a, stacks.b, info);
-		free_stack(&stacks.a);
-		free_stack(&stacks.b);
-		free(info);
-	}
-	return (0);
+void	hidden_rrb(t_stack **b)
+{
+	reverse_rotate(b);
+}
+
+void	hidden_rrr(t_stack **a, t_stack **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
 }

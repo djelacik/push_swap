@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/06 17:29:37 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/12 10:57:38 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -30,20 +31,24 @@ typedef struct s_stacks
 	t_stack	*b;
 }	t_stacks;
 
+typedef struct s_tmp_stacks
+{
+	t_stack	*a;
+	t_stack	*b;
+}	t_tmp_stacks;
+
 typedef struct s_info
 {
 	char	**argv;
 	int		argc;
 	int		size;
-	int		pivot;
-	int		last_value;
-	int		max_value;
-	int		second_max;
 	int		counter;
 
 	int		dup_moves;
 	int		src_direct;
 	int		dest_direct;
+
+	int		err_flag;
 }	t_info;
 
 void	swap(t_stack **node);
@@ -61,6 +66,18 @@ void	reverse_rotate(t_stack **node);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+
+void	hidden_sa(t_stack **a);
+void	hidden_sb(t_stack **b);
+void	hidden_ss(t_stack **a, t_stack **b);
+void	hidden_pa(t_stack **a, t_stack **b);
+void	hidden_pb(t_stack **a, t_stack **b);
+void	hidden_ra(t_stack **a);
+void	hidden_rb(t_stack **b);
+void	hidden_rr(t_stack **a, t_stack **b);
+void	hidden_rra(t_stack **a);
+void	hidden_rrb(t_stack **b);
+void	hidden_rrr(t_stack **a, t_stack **b);
 
 void	add_node(t_stack **head, t_info *info, int value);
 void	print_stacks(t_stacks *stacks);
@@ -86,10 +103,12 @@ int		calculate_moves(t_stack *src, t_stack *dest, int value);
 int		find_cheapest(t_stack *src);
 void	set_cost(t_stack *src, t_stack *dest, t_info *info);
 void	save_cheapest(t_stack *src, t_stack *dest, t_info *info, int value);
-
+void	exec_commands(t_stack **src, t_stack **dest, t_info *info);
 void	smallest_on_top(t_stack **stack);
 void	dup_rotates(t_stack **src, t_stack **dest, t_info *info);
-void	exec_commands(t_stack **src, t_stack **dest, t_info *info);
+
+void	exec_cmds(t_stacks *stacks, t_info *info, char *cmd, int len);
+int		checker(t_stacks *stacks, t_info *info);
 
 void	super_algo(t_stack *src, t_stack *dest, t_info *info);
 

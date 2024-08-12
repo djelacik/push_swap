@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/06 17:03:53 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:36:36 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_stack(t_stack **stack)
 
 void	error_exit(t_stack **stack)
 {
-	write(STDOUT_FILENO, "Error\n", 6);
+	write(STDERR_FILENO, "Error\n", 6);
 	free_stack(stack);
 	exit (1);
 }
