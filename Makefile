@@ -6,46 +6,45 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/08/10 15:18:55 by djelacik         ###   ########.fr        #
+#    Updated: 2024/08/12 15:47:52 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 
 NAME_PS		= push_swap
 NAME_CH		= checker
 
 SOURCE_PS     = \
-	push_swap.c \
-	initialize.c \
-	push.c \
-	rotate.c \
-	swap.c \
-	reverse_rotate.c \
-	ps_utils.c \
-	ps_utils2.c \
-	algorithm_utils.c \
-	set_costs.c \
-	super_algo.c \
+	src/push_swap.c \
+	src/initialize.c \
+	src/push.c \
+	src/rotate.c \
+	src/swap.c \
+	src/reverse_rotate.c \
+	src/ps_utils.c \
+	src/ps_utils2.c \
+	src/algorithm_utils.c \
+	src/set_costs.c \
+	src/super_algo.c 
 	
 SOURCE_CH     = \
-	initialize.c \
-	push.c \
-	rotate.c \
-	swap.c \
-	reverse_rotate.c \
-	ps_utils.c \
-	ps_utils2.c \
-	algorithm_utils.c \
-	set_costs.c \
-	super_algo.c \
-	exec_instructions.c \
-	checker.c \
-	hidden_swap_push.c \
-	hidden_rotate.c \
-	hidden_reverse.c 
-	
+	src/initialize.c \
+	src/push.c \
+	src/rotate.c \
+	src/swap.c \
+	src/reverse_rotate.c \
+	src/ps_utils.c \
+	src/ps_utils2.c \
+	src/algorithm_utils.c \
+	src/set_costs.c \
+	src/super_algo.c \
+	src/exec_instructions.c \
+	src/checker.c \
+	src/hidden_swap_push.c \
+	src/hidden_rotate.c \
+	src/hidden_reverse.c 
 	
 OBJECTS_PS     = ${SOURCE_PS:.c=.o}
 
@@ -88,6 +87,7 @@ clean:
 fclean:		clean
 			@echo "\033[31mDeleting EVERYTHING\n"
 			@make fclean -C ./libft
+			@make fclean -C ./get_next_line
 			@rm -f ${NAME_PS} ${NAME_CH}
 
 re:			fclean all

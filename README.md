@@ -1,88 +1,65 @@
-#### Functional
+# 42 Push_swap Project
 
-###### Is the solution of the push_swap the simplest possible? (with the fewer instructions)
-###### Is the program sorting the stack correctly?
+I strongly recommend reading my blog post about my algorithm, where I explain and visualize my approach to make it easier to understand 🤓
 
-##### Try to run `"./push_swap"`.
+__I haven't hardcoded any number combinations, so I'm not sure if I'll be able to get full points!__
+
+## Overview
+The Push_swap project is an exercise in sorting data on a stack with a limited set of instructions, using the lowest possible number of actions. The challenge involves manipulating various types of algorithms to choose the most appropriate and efficient solution for optimized data sorting.
+
+## Instructions
+- `sa` (swap a): Swap the first 2 elements at the top of stack a.
+- `sb` (swap b): Swap the first 2 elements at the top of stack b.
+- `ss`: Execute `sa` and `sb` simultaneously.
+- `pa` (push a): Move the top element from stack b to stack a.
+- `pb` (push b): Move the top element from stack a to stack b.
+- `ra` (rotate a): Rotate stack a upwards.
+- `rb` (rotate b): Rotate stack b upwards.
+- `rr`: Execute `ra` and `rb` simultaneously.
+- `rra` (reverse rotate a): Rotate stack a downwards.
+- `rrb` (reverse rotate b): Rotate stack b downwards.
+- `rrr`: Execute `rra` and `rrb` simultaneously.
+
+
+## How It Works
+1. **Initialization**: The program starts with a stack 'a' filled with a random sequence of integers, and an empty stack 'b'.
+2. **Sorting Operations**: Using commands like `sa`, `ra`, `pa`, etc., the program sorts the integers in stack 'a' in ascending order.
+3. **Checker Program**: The bonus part of the project includes a checker program that takes the stack as input along with the sorting commands and checks if the stack is sorted correctly.
+
+
+## Installation
+Clone this repository and use the Makefile to compile the project:
+```
+git clone https://github.com/djelacik/push_swap
+```
+## Usage
+
+- `make`: Compiles the executable `push_swap`.
+- `make bonus`: Compiles the executable `checker`.
+
+### Running push_swap
+To run `push_swap` and see the list of operations that sort the provided numbers, use the following command:
+```bash
+./push_swap 5 3 2 8 7 6 1
 ```
 
+### Using checker to validate sorts
+Execute `checker` with the same series of numbers:
+```bash
+./checker 5 3 2 8 7 6 1 
 ```
-###### Does it display nothing?
-##### Try to run `"./push_swap 2 1 3 6 5 8"`.
+Manually enter the sorting instructions, one per line, and signal the end of input with Ctrl + D (Unix) or Cmd + D (MacOS):
+```bash
+ra
+pb 
+rr
+pb 
+...
+cmd + D
 ```
-sa
-pb
-pb
-pb
-sa
-pa
-pa
-pa
-```
-###### Does it display the right result as above?
-##### Try to run `"./push_swap 0 1 2 3 4 5"`.
-```
+`checker` will output `OK` if the stack is sorted correctly and `b` is empty, or `KO` otherwise.
 
-```
-###### Does it display nothing?
-##### Try to run `"./push_swap 0 one 2 3"`.
-```
-Error
-```
-###### Does it display the right result as above?
-##### Try to run `"./push_swap 1 2 2 3"`.
-```
-Error
-```
-###### Does it display the right result as above?
-##### Try to run `"./push_swap <5 random numbers>"` with 5 random numbers instead of the tag.
-###### Does it displays less than 12 commands?
-##### Try to run `"echo -e " " | ./checker "`.
-```
 
-```
-###### Does it display the right result as above?
-##### Try to run `"./checker 0 one 2 3"`.
-```
-Error
-```
-###### Does it display the right result as above?
-##### Try to run `"./checker 1 2 2 3"`.
-```
-Error
-```
-###### Does it display the right result as above?
-##### Try to run `"echo -e "sa\npb\nrrr\n" | ./checker 0 9 1 8 2 7 3 6 4 5"`.
-```
-KO
-```
-###### Does it display the right result as above?
-##### Try to run `"echo -e "pb\nra\npb\nra\nsa\nra\npa\npa\n" | ./checker 0 9 1 8 2"`.
-```
-OK
-```
-###### Does it display the right result as above?
-##### Try to run `"ARG = "4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG"`.
-```
-OK
-```
-###### Does it display the right result as above?
+## License
 
-#### General
-
-##### Try to run `"$ARG= "<100 random numbers>" ; ./push_swap $ARG"` with 100 random different numbers instead of the tag.
-###### Does it displays less than 700 commands?
-##### Try to run `"$ARG= "<100 random numbers> | ./checker $ARG" ; ./push_swap $ARG"` with the same 100 random different numbers as before instead of the tag.
-###### Does it displays OK?
-
-#### Basic
-
-###### +Does the code obey the [good practices](https://github.com/01-edu/public/blob/master/subjects/good-practices.en.md)?
-
-###### +Is there a test file for this code?
-###### +Are the tests checking each possible case?
-
-#### Social
-
-###### +Did you learn anything from this project?
-###### +Would you recommend/nominate this program as an example for the rest of the school?
+This project is licensed under the MIT License
