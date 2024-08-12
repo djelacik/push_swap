@@ -1,6 +1,6 @@
 # 42 Push_swap Project
 
-I strongly recommend reading my blog post about my algorithm, where I explain and visualize my approach to make it easier to understand 🤓
+I strongly recommend reading my [blog post](https://medium.com/@daniel.jelacik/push-swap-sort-a-stack-with-specified-instructions-45f34b976d28) about my algorithm, where I explain and visualize my approach to make it easier to understand 🤓
 
 __I haven't hardcoded any number combinations, so I'm not sure if I'll be able to get full points!__
 
