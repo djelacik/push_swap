@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/12 10:57:38 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/16 16:37:33 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_info
 	int		argc;
 	int		size;
 	int		counter;
+	int		alt_argv;
 
 	int		dup_moves;
 	int		src_direct;
@@ -82,10 +83,11 @@ void	hidden_rrr(t_stack **a, t_stack **b);
 void	add_node(t_stack **head, t_info *info, int value);
 void	print_stacks(t_stacks *stacks);
 int		get_stack_size(t_stack *stack);
-void	free_stack(t_stack **stack);
 int		validator(t_stack **stack);
+void	free_stack(t_stack **stack);
 int		is_sorted(t_stack *stack);
-void	error_exit(t_stack **stack);
+void	error_exit(t_stacks *stacks);
+void	free_exit(t_stacks *stacks);
 void	initialize_info(t_info **info_ptr, int argc, char **argv);
 void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc);
 

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 NAME_PS		= push_swap
 NAME_CH		= checker
