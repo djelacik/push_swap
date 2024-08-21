@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:33:14 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/16 15:16:17 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:20:05 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc)
 	while (info->argv[i])
 	{
 		if (!str_is_digit(vc[i]))
-			error_exit(stacks);
+			free_exit(stacks, EXIT_FAILURE);
 		add_node(&stacks->a, info, ft_atoi(vc[i]));
 		i++;
 	}
 	if (validator(&stacks->a))
-		error_exit(stacks);
+		free_exit(stacks, EXIT_FAILURE);
 }

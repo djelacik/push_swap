@@ -6,7 +6,7 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/08/12 15:47:52 by djelacik         ###   ########.fr        #
+#    Updated: 2024/08/21 15:21:02 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SOURCE_PS     = \
 	src/ps_utils2.c \
 	src/algorithm_utils.c \
 	src/set_costs.c \
-	src/super_algo.c 
+	src/super_algo.c \
+	src/sort_five.c
 	
 SOURCE_CH     = \
 	src/initialize.c \

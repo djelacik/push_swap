@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/16 13:07:08 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:43:22 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ void	free_stack(t_stack **stack)
 		free(temp);
 	}
 	*stack = NULL;
-}
-
-void	error_exit(t_stacks *stacks)
-{
-	write(STDERR_FILENO, "Error\n", 6);
-	free_stack(&(stacks->a));
-	free_stack(&(stacks->b));
-	exit (EXIT_FAILURE);
 }
 
 int	get_stack_size(t_stack *stack)

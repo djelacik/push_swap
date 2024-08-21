@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:16:33 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/16 16:37:33 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:15:09 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,11 @@ void	hidden_rrb(t_stack **b);
 void	hidden_rrr(t_stack **a, t_stack **b);
 
 void	add_node(t_stack **head, t_info *info, int value);
-void	print_stacks(t_stacks *stacks);
 int		get_stack_size(t_stack *stack);
 int		validator(t_stack **stack);
 void	free_stack(t_stack **stack);
 int		is_sorted(t_stack *stack);
-void	error_exit(t_stacks *stacks);
-void	free_exit(t_stacks *stacks);
+void	free_exit(t_stacks *stacks, int i);
 void	initialize_info(t_info **info_ptr, int argc, char **argv);
 void	initialize_stacks(t_stacks *stacks, t_info *info, char **vc);
 
@@ -108,6 +106,7 @@ void	save_cheapest(t_stack *src, t_stack *dest, t_info *info, int value);
 void	exec_commands(t_stack **src, t_stack **dest, t_info *info);
 void	smallest_on_top(t_stack **stack);
 void	dup_rotates(t_stack **src, t_stack **dest, t_info *info);
+void	sort_five(t_stack **a, t_stack **b);
 
 void	exec_cmds(t_stacks *stacks, t_info *info, char *cmd, int len);
 int		checker(t_stacks *stacks, t_info *info);
