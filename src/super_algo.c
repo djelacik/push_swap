@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:36:16 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/06 17:14:46 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:29:27 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ void	exec_commands(t_stack **src, t_stack **dest, t_info *info)
 	pb(src, dest);
 }
 
-void	super_algo(t_stack *src, t_stack *dest, t_info *info)
+void	super_algo(t_stacks *stacks, t_info *info)
 {
-	pb(&src, &dest);
-	pb(&src, &dest);
-	while (src)
+	pb(&stacks->a, &stacks->b);
+	pb(&stacks->a, &stacks->b);
+	while (stacks->a)
 	{
-		exec_commands(&src, &dest, info);
+		exec_commands(&stacks->a, &stacks->b, info);
 	}
-	rb(&dest);
-	while (dest)
+	rb(&stacks->b);
+	while (stacks->b)
 	{
-		pa(&src, &dest);
+		pa(&stacks->a, &stacks->b);
 	}
-	smallest_on_top(&src);
+	smallest_on_top(&stacks->a);
 }

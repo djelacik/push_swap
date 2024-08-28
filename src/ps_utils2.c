@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:42:55 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/21 14:42:55 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:35:26 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,4 @@ int	if_largest(t_stack *stack, int value)
 		current = current->next;
 	}
 	return (1);
-}
-
-void	free_exit(t_stacks *stacks, int exit_code)
-{
-	if (exit_code)
-		write(STDERR_FILENO, "Error\n", 6);
-	free_stack(&(stacks->a));
-	free_stack(&(stacks->b));
-	exit (exit_code);
 }

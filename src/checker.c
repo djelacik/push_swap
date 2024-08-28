@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 19:25:02 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/21 15:21:34 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:31:01 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	checker(t_stacks *stacks, t_info *info)
 	{
 		exec_cmds(stacks, info, line, ft_strlen(line) - 1);
 		if (info->err_flag)
-			free_exit(stacks, EXIT_FAILURE);
+		{
+			free(line);
+			free_exit(stacks, EXIT_FAILURE, info);
+		}
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
@@ -43,14 +46,17 @@ int	main(int argc, char **argv)
 		if (is_sorted(stacks.a))
 		{
 			write(STDOUT_FILENO, "OK\n", 3);
-			free_exit(&stacks, EXIT_SUCCESS);
+			free_exit(&stacks, EXIT_SUCCESS, info);
 		}
-		if (checker(&stacks, info))
+		else if (checker(&stacks, info))
 			write(STDOUT_FILENO, "OK\n", 3);
 		else
+		{
 			write(STDOUT_FILENO, "KO\n", 3);
-		free_exit(&stacks, EXIT_SUCCESS);
-		free(info);
+			free_stack(&stacks.a);
+			free_stack(&stacks.b);
+		}
+		free_exit(&stacks, EXIT_SUCCESS, info);
 	}
 	return (0);
 }

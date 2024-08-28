@@ -6,20 +6,25 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/21 14:43:22 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:41:35 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_node(t_stack **head, t_info *info, int value)
+int	add_node(t_stack **head, t_info *info, long value)
 {
 	t_stack	*new_node;
 	t_stack	*current;
 
+	if (value == 2147483648)
+		return (-1);
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		return ;
+	{
+		free_stack(head);
+		return (0);
+	}
 	new_node->value = value;
 	new_node->next = NULL;
 	if (*head == NULL)
@@ -32,19 +37,7 @@ void	add_node(t_stack **head, t_info *info, int value)
 		current->next = new_node;
 	}
 	info->size++;
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*temp;
-
-	while (*stack)
-	{
-		temp = *stack;
-		*stack = (*stack)->next;
-		free(temp);
-	}
-	*stack = NULL;
+	return (0);
 }
 
 int	get_stack_size(t_stack *stack)

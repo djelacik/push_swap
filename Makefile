@@ -6,13 +6,12 @@
 #    By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:59:53 by djelacik          #+#    #+#              #
-#    Updated: 2024/08/21 15:21:02 by djelacik         ###   ########.fr        #
+#    Updated: 2024/08/23 13:56:22 by djelacik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
-
 NAME_PS		= push_swap
 NAME_CH		= checker
 
@@ -28,7 +27,8 @@ SOURCE_PS     = \
 	src/algorithm_utils.c \
 	src/set_costs.c \
 	src/super_algo.c \
-	src/sort_five.c
+	src/sort_five.c \
+	src/free.c
 	
 SOURCE_CH     = \
 	src/initialize.c \
@@ -45,7 +45,8 @@ SOURCE_CH     = \
 	src/checker.c \
 	src/hidden_swap_push.c \
 	src/hidden_rotate.c \
-	src/hidden_reverse.c 
+	src/hidden_reverse.c \
+	src/free.c
 	
 OBJECTS_PS     = ${SOURCE_PS:.c=.o}
 
@@ -53,32 +54,30 @@ OBJECTS_CH		= ${SOURCE_CH:.c=.o}
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I. -c $< -o $@
+				@echo "\033[35m-- Compiled $< --"
+
 
 all:		${NAME_PS} ${NAME_CH}
 
 ${NAME_PS}:	${OBJECTS_PS}
-			@echo "\033[35m----Compiling libft and get_next_line----"
+			@echo "\033[35m----Compiling libft and get_next_line with PUSH_SWAP----"
 			@make -C ./libft
 			@make -C ./get_next_line
 			$(CC) $(OBJECTS_PS) -Llibft -lft -Lget_next_line -lgetnextline -o ${NAME_PS}
 			@echo "Push_swap Compiled!\n"
 			
-${NAME_CH}:	${OBJECTS_CH}
-			@echo "\033[35m----Compiling libft and get_next_line----"
-			@make -C ./libft
-			@make -C ./get_next_line
-			$(CC) $(OBJECTS_CH) -Llibft -lft -Lget_next_line -lgetnextline -o ${NAME_CH}
-			@echo "Push_swap Compiled!\n"
+${NAME_CH}:	.bonus
 			
-bonus:		${NAME_CH}
 
 .bonus:		${OBJECTS_CH}
-			@echo "\033[36m----Compiling libft and get_next_line----"
+			@echo "\033[32m----Compiling libft and get_next_line with CHECKER----"
 			@make -C ./libft
 			@make -C ./get_next_line
 			$(CC) $(OBJECTS_CH) -Llibft -lft -Lget_next_line -lgetnextline -o ${NAME_CH}
 			touch .bonus
 			@echo "Push_swap Bonus Compiled!\n"
+
+bonus:		${NAME_CH}
 
 clean:
 			@make clean -C ./libft
