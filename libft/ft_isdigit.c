@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:39:45 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/14 18:25:09 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:54:34 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ int	str_is_digit(char *str)
 {
 	while (*str)
 	{
+		if (*str == '-' || *str == '+')
+			str++;
 		if (*str < '0' || *str > '9')
 			return (0);
 		str++;

@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 14:28:34 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/28 11:39:56 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:28:10 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	sort_three(t_stack **a)
 	}
 	else if (second > third && third > first)
 	{
-		ra(a);
+		rra(a);
 		sa(a);
 	}
 	else if (first > second && third > first)

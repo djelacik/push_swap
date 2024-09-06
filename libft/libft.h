@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:19:56 by djelacik          #+#    #+#             */
-/*   Updated: 2024/07/28 18:16:39 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:06:15 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 
-int			ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 char		*ft_itoa(int n);
 char		**ft_split(char const *s, char c);
 

@@ -6,25 +6,25 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:11:21 by djelacik          #+#    #+#             */
-/*   Updated: 2024/05/03 10:34:32 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:31:57 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_convert(const char *str, int sign)
+static long	ft_convert(const char *str, int sign)
 {
-	unsigned long long	ans;
+	long long	ans;
 
 	ans = 0;
 	while (*str >= '0' && *str <= '9')
 	{
-		if (ans > LLONG_MAX / 10 || (ans == LLONG_MAX / 10 && *str - '0' > 7))
+		if (ans > INT_MAX || ans < INT_MIN)
 		{
 			if (sign == 1)
-				return (-1);
+				return (2147483649);
 			else
-				return (0);
+				return (2147483649);
 		}
 		ans = ans * 10 + *str - '0';
 		str++;
@@ -32,7 +32,7 @@ static int	ft_convert(const char *str, int sign)
 	return (ans * sign);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			sign;
 

@@ -6,7 +6,7 @@
 /*   By: djelacik <djelacik@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:04:19 by djelacik          #+#    #+#             */
-/*   Updated: 2024/08/23 13:41:35 by djelacik         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:30:45 by djelacik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	add_node(t_stack **head, t_info *info, long value)
 	t_stack	*new_node;
 	t_stack	*current;
 
-	if (value == 2147483648)
+	if (value == 2147483649)
 		return (-1);
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
